@@ -1,0 +1,32 @@
+{% extends "layout.html" %}
+
+{% block title %}Upload Image{% endblock %}
+
+{% block content %}
+    <h2>Upload an Image</h2>
+    
+    <form id="upload-form" action="/upload" method="post" enctype="multipart/form-data">
+        <input type="file" name="file" accept="image/*" required>
+        <br>
+        <button type="submit">Upload</button>
+    </form>
+
+    <p id="upload-message" style="color: blue; display: none;">Uploading... Please wait.</p>
+
+    {% if message %}
+        <p class="message">{{ message }}</p>
+    {% endif %}
+
+    <br>
+    <a href="/gallery">View Uploaded Images</a>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $("#upload-form").submit(function() {
+                // Show "Uploading... Please wait" message when form is submitted
+                $("#upload-message").show();
+            });
+        });
+    </script>
+{% endblock %}

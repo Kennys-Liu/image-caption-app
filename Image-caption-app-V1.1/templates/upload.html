@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+
+{% block title %}Uploaded Image{% endblock %}
+
+{% block content %}
+    <h2>Uploaded Image</h2>
+
+    {% if error %}
+        <p style="color: red;">{{ error }}</p>
+    {% else %}
+        <img src="data:image/jpeg;base64,{{ image_data }}" alt="Uploaded Image" style="max-width: 300px; border: 1px solid #ccc; padding: 5px; border-radius: 5px;">
+        <p><strong>S3 URL:</strong> <a href="{{ file_url }}" target="_blank">{{ file_url }}</a></p>
+        <p><strong>Caption:</strong> {{ caption }}</p>
+    {% endif %}
+
+    <br>
+    <a href="/">Upload Another Image</a> | <a href="/gallery">View Gallery</a>
+{% endblock %}

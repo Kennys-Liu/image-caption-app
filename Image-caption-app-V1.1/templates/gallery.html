@@ -1,0 +1,25 @@
+{% extends "layout.html" %}
+
+{% block title %}Image Gallery{% endblock %}
+
+{% block content %}
+    <h2>Uploaded Images</h2>
+
+    {% if error %}
+        <p style="color: red;">{{ error }}</p>
+    {% elif images %}
+        <div class="gallery">
+            {% for image in images %}
+                <div class="image-container" style="display: flex; align-items: center; margin-bottom: 20px;">
+                    <img src="{{ image.url }}" alt="Uploaded Image" style="max-width: 200px; border-radius: 5px; margin-right: 20px;">
+                    <p><strong>Caption:</strong> {{ image.caption }}</p>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>No images uploaded yet.</p>
+    {% endif %}
+
+    <br>
+    <a href="/">Upload More Images</a>
+{% endblock %}
