@@ -1,0 +1,6 @@
+Flask
+werkzeug
+boto3
+mysql-connector-python
+google-generativeai
+Pillow
